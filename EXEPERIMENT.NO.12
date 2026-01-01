@@ -1,0 +1,17 @@
+grammar = {
+    'S': [('NP', 'VP')],
+    'NP': [('dog',), ('cat',)],
+    'VP': [('runs',), ('eats',)]
+}
+def earley(sentence):
+    words = sentence.split()
+    chart = [set() for _ in range(len(words) + 1)]
+    chart[0].add(('S', 0, 0))   # (rule, dot position, start)
+
+    for i in range(len(words) + 1):
+        for rule, dot, start in list(chart[i]):
+            prod = grammar.get(rule, ())
+            if dot < len(prod) and i < len(words) and prod[dot][0] == words[i]:
+                chart[i+1].add((rule, dot+1, start))
+    return any(r == 'S' and d == 1 and s == 0 for r, d, s in chart[len(words)])
+print(earley("dog runs"))

@@ -1,0 +1,10 @@
+grammar = {'S': [['a','S','b'], ['']]}
+def parse(sym, s):
+    if not sym: return s == ''
+    f, r = sym[0], sym[1:]
+    if f in grammar:
+        return any(parse(p+r, s) for p in grammar[f])
+    return s.startswith(f) and parse(r, s[len(f):])
+print(parse(['S'], "aabbb"))  
+print(parse(['S'], "ab"))     
+print(parse(['S'], "aabb"))   

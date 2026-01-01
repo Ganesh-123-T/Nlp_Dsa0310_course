@@ -1,0 +1,7 @@
+def agree(sentence):
+    s, v = sentence.lower().split()
+    return (s.endswith('s') and not v.endswith('s')) or \
+           (not s.endswith('s') and v.endswith('s'))
+print(agree("cat runs"))
+print(agree("cats run"))
+print(agree("cat run"))

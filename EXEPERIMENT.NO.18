@@ -1,0 +1,11 @@
+def parse_fopc(expr):
+    name, args = expr.split("(")
+    args = args.replace(")", "").split(",")
+    return {
+        "Predicate": name,
+        "Arguments": args
+    }
+expression = "likes(John,Mary)"
+result = parse_fopc(expression)
+print("Predicate:", result["Predicate"])
+print("Arguments:", result["Arguments"])

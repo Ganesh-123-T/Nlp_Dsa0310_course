@@ -1,0 +1,4 @@
+
+text = "John went to the park. He saw a dog."
+resolved = text.replace("He", "John").replace("he", "John")
+print(resolved)

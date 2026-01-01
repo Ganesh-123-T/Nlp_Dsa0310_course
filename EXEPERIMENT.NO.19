@@ -1,0 +1,6 @@
+
+from nltk.wsd import lesk
+sentence = "I sat near the river bank".split()
+sense = lesk(sentence, "bank")
+print(sense.name())
+print(sense.definition())

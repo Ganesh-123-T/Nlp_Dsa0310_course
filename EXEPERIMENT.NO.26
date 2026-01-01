@@ -1,0 +1,5 @@
+from transformers import pipeline
+translator = pipeline("translation_en_to_fr")
+text = "I love natural language processing."
+french = translator(text)[0]['translation_text']
+print(french)

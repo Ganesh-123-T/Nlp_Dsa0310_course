@@ -1,0 +1,7 @@
+def dialog_act(s):
+    s = s.lower()
+    return "Greeting" if "hi" in s or "hello" in s else \
+           "Thanking" if "thanks" in s else \
+           "Question" if s.endswith("?") else "Statement"
+for sentence in ["Hi!", "How are you?", "I am fine.", "Thanks!"]:
+    print(f"{sentence} -> {dialog_act(sentence)}")

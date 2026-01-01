@@ -1,0 +1,10 @@
+import nltk
+from nltk import PCFG
+g = PCFG.fromstring("""
+S -> NP VP [1.0]
+NP -> 'a' [0.5] | 'b' [0.5]
+VP -> 'c' [1.0]
+""")
+p = nltk.ViterbiParser(g)
+for t in p.parse("a c".split()):
+    print(t)

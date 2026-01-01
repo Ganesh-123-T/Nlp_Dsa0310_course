@@ -1,0 +1,7 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+docs = ["data science", "science project", "machine learning"]
+query = "science"
+v = TfidfVectorizer()
+X = v.fit_transform(docs + [query])
+scores = X[:-1] @ X[-1].T
+print(scores.toarray())
